@@ -1,0 +1,70 @@
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+
+<h1 style="color:navy;margin:70px;font-family:Arial;"> Live Safely When Traveling </h1>
+
+<form style="margin-left:70px;font-family:Arial;" action="/" method="POST">
+    <strong>
+    Choose the city:<br/>
+    </strong>
+    <br/>
+    <select name="cities">
+      <option value="San_Francisco">San Francisco</option>
+      <option value="Boston">Boston</option>
+      <option value="Austin">Austin</option>
+      <option value="Seattle">Seattle</option>
+      <option value="Los_Angeles">Los Angeles</option>
+      <option value="San_Diego">San Diego</option>
+      <option value="New_Orleans">New Orleans</option>
+      <option value="Atlanta">Atlanta</option>
+      <option value="Las_Vegas">Las Vegas</option>
+      <option value="Miami">Miami</option>
+      <option value="Phoenix">Phoenix</option>
+      <option value="Columbus">Columbus</option>
+      <option value="Detroit">Detroit</option>
+      <option value="Orlando">Orlando</option>
+      <option value="Pittsburgh">Pittsburgh</option>
+      <option value="Oakland">Oakland</option>
+    </select>
+    <br><br>
+    <strong>
+    Sort By Price:<br/>
+    </strong>
+    <br/>
+    <input type="radio" name="sortby" value="100"/> < = $100 <br/>
+    <input type="radio" name="sortby" value="200"/> >$100 ~ $200 <br/>
+    <input type="radio" name="sortby" value="300"/> >$200 ~ $300 <br/>
+    <input type="radio" name="sortby" value="400"/> >$300 <br/>
+    <br/>
+    <strong>
+    Sort Order:<br/>
+    </strong>
+    <br/>
+    <input type="radio" name="sortorder" value="asc"/> Ascending <br/>
+    <input type="radio" name="sortorder" value="desc"/> Descending <br/>
+    <br/>
+    <input style="background:Gold;padding: 8px 16px;cursor: pointer;font-family:Arial;" type="submit" name="Get_Hotels" value="Get Hotels"/>
+    <br/>
+    <br/>
+</form>
+
+<form style="margin-left:70px;" action="/results" method="POST">
+    <h2 style="color:navy;margin-top:30px;font-family:Arial;"> Hotels List: </h2>
+    <table border=1>
+        <tr style="padding: 10px 10px;background: Navy;color:white;">
+            <th style="padding: 10px 10px;"> Hotel Name </th>
+            <th style="padding: 10px 10px;"> Price </th>
+            <th style="padding: 10px 10px;"> Rate </th>
+        </tr>
+    {% for h in hotels %}
+        <tr>
+            <td style="padding: 10px 10px;border-bottom: 1px solid #cecfd5;border-right: 1px solid #cecfd5;"><input type="radio" name="hotelname" value='{{h[0]}}'/>{{h[0]}}<br/></td>
+            <td style="padding: 10px 10px;border-bottom: 1px solid #cecfd5;border-right: 1px solid #cecfd5;">{{h[2]}}</td>
+            <td style="padding: 10px 10px;border-bottom: 1px solid #cecfd5;border-right: 1px solid #cecfd5;">{{h[1]}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <!-- <script src="/static/plotly.js"></script> -->
+    <br/>
+    <input style="background:Gold;padding: 8px 16px;cursor: pointer;font-family:Arial;" type="submit" name="Get_Crimes_Map" value="Get Crimes Map"  />
+    <br/>
+</form>
